@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--
+    Theme created by Jonathan Haggard http://jonathanhaggard.com/ 
+    With help from James Cline http://jamesrcline.com/
+    Adapted by Teemu Autto http://teemu.rautakuu.org/
+-->
+<html>
+    <head>
+        <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+
+    	<link href="http://fonts.googleapis.com/css?family=Iceland" rel="stylesheet" type="text/css"/>
+		<meta name="color:Key Color" content="#F9ECBA"/>
+		<meta name="image:Background" content="http://static.tumblr.com/szanjxb/Bahlplh1c/bg.jpg"/>
+        <style type="text/css">
+
+		    html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, font, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: 0;
+				font-size: 100%;
+				vertical-align: baseline;
+				background: transparent;
+			}
+
+			header {
+				background: white;
+				background: rgba(255,255,255,0.75);
+				/** For newer browsers **/
+				background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
+				background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
+				background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
+				background: -o-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
+				background: linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
+
+				border-top: 1px solid #D4D4D4;
+				border-bottom: 1px solid #5B5B5B;
+				margin-left: 0;
+				padding: 4px 10px;
+				position: relative;
+				width: 100%;
+				left:0;
+				right:0;
+				display:block;
+				margin-top:2em;
+				margin-bottom:2em;
+			}
+
+			header h1 {
+				font-size:3em;
+				text-shadow: 0 -1px 0 {color:Key Color};
+			}
+
+			header h1:first-letter {
+				color:red;
+			}
+
+			header h1 a {
+				color:#fff !important;
+			}
+
+			header h1 a:hover {
+				text-shadow: 0 1px 1px {color:Key Color};
+			}
+			header h1 a:first-letter:hover {
+				text-shadow: 0 1px 1px {color:Key Color};
+			}
+
+			ol, ul {
+				list-style: none;
+			}
+			blockquote, .caption>ol, .caption>ul, .permalinkleft ul li, .permalinkleft ol li{
+				margin-left:20px;
+				margin-bottom:10px;
+			}
+			blockquote, .permalinkleft ul, .permalinkleft ol{
+				padding:20px;
+				font-style: italic;
+			}
+
+			body{
+        		background-image: url("{image:Background}") ;
+        		background-repeat: repeat;
+        		font-size: 12px;
+        		color:#FFF;
+        		font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        		
+        	}
+
+        	h1{
+				font-family: 'Iceland', sans-serif;
+        		font-size: 18px;
+        		color:{color:Key Color};
+        		font-weight: normal;
+        		
+        	}
+        	h1 a{
+        		text-decoration:none;
+        	}
+        	h2{
+
+				font-family: 'Iceland', sans-serif;
+        		color:#2f2f2f;
+        		margin-bottom:5px;
+        		font-weight:normal;
+        	}
+        	h2 a, .textpost p a{
+        		color:#2f2f2f;
+        		text-decoration:none;
+        	}
+        	.caption>ol, .permalinkleft ol li{
+        		list-style: decimal;
+        	}
+        	.caption>ul, .permalinkleft ul li{
+        		list-style: disc;
+        	}
+        	a, a:visited{
+        		color:{color:Key Color};
+        		text-decoration:underline;
+        	}
+        	a:hover{
+        		color:#FFF;
+        		text-decoration:none;
+        	}
+        	a.overlaylink:hover, a.overlaylink:visited,  a.overlaylink{
+        		text-decoration:none !important;
+        	}
+        	.header {
+        		margin:0;
+        		width:300px;
+        		float:left;
+        	}
+        	ol.notes{
+        		margin-top: 50px;
+        	}
+			ol.notes li.note{
+				margin-bottom:15px;
+				list-style: none;
+			}
+			ul.chat li{
+				margin-bottom:5px;
+			}
+			.permalinkleft{
+				padding: 30px 0px;
+			}
+        	img.permalinkimg, .permalinkleft iframe{
+        		padding:10px;
+        		width:520px;
+        		margin: 0 auto;
+        		display:block;
+        		background-color:#fff;
+        	}
+        	p.description{
+        		color:#fff;
+				font-size:70%;
+				margin-top:-2%;
+				margin-bottom:2%;
+				text-shadow: 0 -1px 0 #000;
+        	}
+        	.caption{
+        		clear:both;
+        		font-weight:normal;
+        		color:#FFF;
+        		margin-top: 25px;
+        		
+        	}
+        	.caption p{
+        		line-height: 1.4;
+        		margin-bottom:15px;
+        	}
+        	.nav{
+        		margin:0 15px 0;
+        		width:300px;
+        		float:right;
+        		text-align:right;
+        	}
+			.nav li.by {
+				display:none;
+			}
+        	.nav ul li{
+        		margin-bottom:5px;
+        		text-transform: capitalize;
+        	}
+        	.nav ul li a{
+        		text-decoration:none;
+        	}
+			.label{
+				font-weight:bolder;
+			}
+		    .next{
+		    	background: url("http://static.tumblr.com/szanjxb/IzUlpbzw0/next.gif") no-repeat right center;
+		    	width:10%;
+		    	height:100%;
+		    	position:fixed;
+				top:0;
+				right:0;
+				float:left;
+				overflow:none;
+				border-right:0px solid #FFF;
+		    }
+		    .previous{
+		    	background: url("http://static.tumblr.com/szanjxb/mCDlpbzy4/prev.gif") no-repeat left center;
+		    	width:10%;
+		    	height:100%;
+		    	position:fixed;
+				top:0;
+				left:0;
+				float:left;
+				overflow:none;  
+				border-left:0px solid #FFF;
+		    }
+			.previous, .next {
+				opacity:0.75;
+				z-index:1;
+			}
+
+		    .next:hover{
+		    	border-right:20px solid #FFF;
+				opacity:1;
+		    }
+		  
+		  	.previous:hover{
+		  		border-left:20px solid #FFF;
+				opacity:1;
+		  	}
+
+			.shadow {
+				-webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3);
+					-moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3);
+						box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3);
+			}
+
+		  	.content{
+		  		width:990px;
+		  		margin:0 auto;
+		  		overflow:hidden;
+		  	}
+		  	.textpost {
+		  		width:148px; height:148px;
+		  		margin:10px;
+		  		overflow:hidden;
+		  		color:#8c8c8c;
+		  	}
+		  	.textpost>p{
+		  		color:#8c8c8c;
+		  		line-height: 1.6;
+		  	}
+		  	.textpost h2 a, .textpost h2, .textpost a{
+		  		color:#2f2f2f;
+		  		
+		  	}
+		  	.postrow{
+		  		clear:both;
+				overflow: hidden;
+				padding-bottom:150px;
+				
+		  	}
+		  	.post{
+		  		width:168px; height:168px;
+		  		margin: 15px 15px;
+		  		position:relative;
+		  		float:left;
+		  		background-color:white;
+				text-align: center;
+				overflow: hidden;
+		  		
+		  	}
+		  	.post iframe, .post embed{
+		  		width:148px; height:148px;
+		  		padding:10px;
+		  	}
+		  	.permalinkdesc{
+		  		margin: 0 auto;
+		  		margin-bottom:15px;
+		  		width:500px;
+		  	}
+		  	.permalinkleft p{
+		  		color:#FFF;
+		  		line-height: 1.4;
+		  	}
+		  	.overlaylink{
+		  		opacity:0;
+		  		position: absolute;
+		  		top:10px; left:10px;
+		  		background-color:black;
+		  		text-align:center;
+		  		padding: 10px;
+		  		z-index:10;
+		  		max-width:128px;
+				max-height: 128px;
+		  		color:#FFF;
+				display:block;
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				line-height:128px;
+		  	}
+		  	.post:hover .overlaylink{
+		  		opacity: .75;
+		  	}
+		  	.tags{
+		  		overflow:hidden;
+		  	}
+		  	.tags ul li{
+		  		float:left;
+		  		margin-right:5px;
+		  	}
+		  	.tags ul li a{
+		  		text-decoration: underline;
+		  	}
+		  	.tags ul li a:hover, .meta a:hover{
+		  		text-decoration:none;
+		  		color:#fff;
+		  	}
+			.overlay-desc {
+			    display: inline-block;
+				margin: 0 auto;
+				text-align: left;
+				line-height:1.2em;
+				vertical-align:middle;
+			}
+			.overlay-desc * {
+				padding:0;
+				margin:0;
+			}
+{CustomCSS}
+        </style>
+        <!-- <link rel="stylesheet" href="http://static.tumblr.com/szanjxb/7fJlpp71p/animation.css" /> -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+	  			$('.post').hide().fadeIn(200);
+	  		});
+
+		</script>
+		<!-- IE hacks -->
+		<!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-27377145-1']);
+          _gaq.push(['_setDomainName', 'iidashop.it']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+		<meta name="google-site-verification" content="WyNjSV_nxbgsS9P87fQNbHKkfzN2_ch8ShVX-YA8yCc" />
+    </head>
+	<body>
+	
+{block:Pagination}
+
+{block:PreviousPage}
+	<a href="{PreviousPage}" title="{lang:Previous}"><div class="next"></div></a>	
+{block:PreviousPage}
+
+{block:NextPage}
+	<a href="{NextPage}" title="{lang:Next}"><div class="previous"></div></a>
+{/block:NextPage}
+	
+{/block:Pagination}
+
+
+{block:PermalinkPagination}
+
+{block:PreviousPost}
+	<a href="{PreviousPost}" title="{lang:Previous}"><div class="previous"></div></a>
+{/block:PreviousPost}
+
+{block:NextPost}
+	<a href="{NextPost}" title="{lang:Next}"><div class="next"></div></a>
+{/block:NextPost}
+
+{/block:PermalinkPagination}
+
+
+
+	<header class="shadow">
+	<div class="content">
+		<div class="header">
+		<h1><a href="/" title="{Description}">iida</a></h1>
+		<p class="description">{Description}</p>
+		</div>
+		<nav class="nav">
+			<ul>
+				{block:SubmissionsEnabled} <li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled} 
+				{block:AskEnabled} <li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+				{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+				<li class="by"><a href="http://jonathanhaggard.com/">Theme based by Jon</a></li>
+				<li class="by"><a href="http://teemu.rautakuu.org/">Modified by <img src="http://24.media.tumblr.com/tumblr_lvfs92D3ZB1r7tt4ho1_100.png" alt="Teemu Autto" /> Industries</a></li>
+<!--
+				<li>
+					<form class="searchform" action="/search" method="get">
+						<input type="text" name="q" id="q" value="{SearchQuery}"/>
+						<label class="holder" for="q">Etsi...</label>
+						<button class="submit">Etsi</button>
+					</form>
+
+<style>
+form.searchform {
+	position:relative;
+    display: inline-block;
+}
+
+form.searchform input {
+	border-radius: 3px 3px 3px 3px;
+	width: 105px;
+	padding: 6px;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	padding: 6px 6px 4px;
+	width: 200px;
+
+	border: none!important;
+	-webkit-box-shadow: 0 -1px 0 rgba(0,0,0,.3),inset 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 -1px 0 rgba(0,0,0,.3),inset 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 -1px 0 rgba(0,0,0,.3),inset 0 1px 2px rgba(0,0,0,.2);
+	background-color: white;
+	color: ;
+	text-shadow: 0 1px 1px #FFFFFF;
+
+	opacity: .7;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+}
+
+form.searchform:hover input {
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+	opacity: 0.9;
+}
+form.searchform input:focus, form.searchform input.focused, form.searchform input.actasfocused {
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 0 10px rgba(255, 255, 255, 0.9);
+	opacity: 1;
+	outline: medium none;
+}
+
+form.searchform input:hover, form.searchform input:focus, form.searchform input.focused, form.searchform input.actasfocused {
+	border-color: {color:Key Color};
+}
+
+form.searchform .holder {
+	line-height: 28px;
+
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	left: 8px;
+	white-space: nowrap;
+	cursor: text;
+	color: #999;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	-webkit-transition: opacity .1s,font-size .1s;
+	-moz-transition: opacity .1s,font-size .1s;
+	-o-transition: opacity .1s,font-size .1s
+
+	font-size: 75%;
+}
+
+form.searchform.hasome .holder {
+	font-size: 0 !important;
+	opacity: 0;
+}
+
+form.searchform input:focus + label.holder {
+    opacity: 0.6;
+}
+
+form.searchform button.submit {
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transition: opacity .1s;
+	-moz-transition: opacity .1s;
+	-o-transition: opacity .1s;
+	opacity: 0;
+	font-size: 0;
+	visibility:hidden;
+	display:inline-block;
+}
+form.searchform.hasome button.submit {
+	font-size: 100% !important;
+	opacity: 0.6;
+	visibility:visible;
+}
+
+
+</style>
+<script>
+
+function update_searchfield(field) {
+	console.log('Field', $(field).val());
+	if ($(field).val() != "")
+		$(field).parent('form.searchform').addClass('hasome');
+	else
+		$(field).parent('form.searchform').removeClass('hasome');
+}
+
+$('form.searchform input').keyup(function() { update_searchfield(this) });
+update_searchfield($('form.searchform input'));
+</script>
+				</li>
+-->
+
+			</ul>
+		</nav>
+		</div>
+	</header>
+	
+	{block:IndexPage}	
+	<div class="content">
+
+		
+		<div class="postrow">
+		{block:Posts}	
+			<div class="shadow post {block:Post1}one{/block:Post1} {block:Post2}two{/block:Post2} {block:Post3}three{/block:Post3} {block:Post4}four{/block:Post4} {block:Post5}five{/block:Post5} {block:Post6}six{/block:Post6} {block:Post7}seven{/block:Post7} {block:Post8}eight{/block:Post8} {block:Post9}nine{/block:Post9} {block:Post10}ten{/block:Post10} {block:Post11}eleven{/block:Post11} {block:Post12}twelve{/block:Post12} {block:Post13}thirteen{/block:Post13} {block:Post14}fourteen{/block:Post14} {block:Post15}fifteen{/block:Post15}">
+			<a href="{Permalink}" class="overlaylink">
+				<span class="overlay-desc">
+					{Caption}
+				</span>
+			</a>
+				{block:Photo}
+					<div class="outer">
+					<a class="img-wrapper" href="{Permalink}"><img src="{PhotoURL-250}" alt="{PhotoAlt}"/></a>
+					</div>
+				{/block:Photo}
+				
+				{block:Text}
+				
+					<div class="textpost">
+						<h2><a href="{Permalink}">{Title}</a></h2>
+						{Body}
+					</div>
+					
+				{/block:Text}
+				
+				{block:Audio}
+				
+					<a href="{Permalink}"><img src="{block:AlbumArt}{AlbumArtURL}{/block:AlbumArt}" alt="{Artist} : {Album} / {TrackName}"/></a>
+				
+				{/block:Audio}
+				
+
+				
+				{block:Quote}
+					<div class="textpost">
+						<h2><a href="{Permalink}">{Quote}</a></h2>
+					</div>
+				{/block:Quote}
+				
+				{block:Link}
+					<div class="textpost">
+						<h2><a href="{Permalink}">{Name}</a></h2>
+						{block:Description}{Description}{/block:Description}
+					</div>
+				{/block:Link}
+				
+
+				
+                {block:Chat}
+					<div class="textpost">
+                        {block:Title}
+                            <h2><a href="{Permalink}">{Title}</a></h2>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}
+
+                                    {Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </div>
+                {/block:Chat}
+				
+				{block:Video}
+				<div class="videopost">
+					
+					{Video-400}
+				</div>
+				{/block:Video}
+
+			
+			</div>
+		{/block:Posts}
+		</div>
+	</div>
+
+	{/block:IndexPage}
+	
+	{block:PermalinkPage}
+	<div class="content" style="margin: 0 auto; width: 540px; margin-bottom:50px;">
+	{block:Posts}
+	
+		<div class="permalinkleft">
+			{block:Answer}
+				<h1>{Asker} Asks</h1>
+				<blockquote>{Question}</blockquote>
+				{Answer}
+			{/block:Answer}
+			
+			{block:Quote}
+				<blockquote>
+					<h1><a href="{Permalink}">&#151;{Quote}</a></h1>
+				</blockquote>
+				{block:Source}{Source}{/block:Source}
+			{/block:Quote}
+			
+			{block:Audio}
+			
+				{block:AlbumArt}
+					<img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist} - {block:Album}{Album}{/block:Album} / {block:TrackName}{TrackName}{/block:TrackName}" class="permalinkimg shadow"/>
+				{/block:AlbumArt}
+			
+			{/block:Audio}	
+			{block:Chat}
+		
+			{block:Title}
+				<h1><a href="{Permalink}">{Title}</a></h1>
+			{/block:Title}
+		
+				<ul class="chat" style="margin-left:0px;">
+					{block:Lines}
+						<li class="{Alt}">
+					{block:Label}
+						 <span class="label">{Label}</span>
+					{/block:Label}
+		
+						{Line}
+						</li>
+					{/block:Lines}
+				</ul>
+		
+			{/block:Chat}
+			
+			{block:Link}
+				<h1><a href="{URL}">{Name}</a></h1>
+			{/block:Link}
+			
+			
+			
+			{block:Photo}
+				{LinkOpenTag}<img src="{PhotoURL-500}" class="permalinkimg shadow" />{LinkCloseTag}
+			{/block:Photo}
+					
+						
+			{block:Video}
+				{Video-500}
+			{/block:Video}
+					
+			{block:Text}
+			
+				<h1><a href="{Permalink}">{Title}</a></h1>
+				{Body}
+			
+			{/block:Text}
+		</div>
+		
+		<div class="permalinkdesc">
+		
+			<div class="tags">
+			{block:HasTags}
+			
+					<ul>
+						{block:Tags}
+						<li><a href="{TagURL}">#{Tag}</a></li>
+						{/block:Tags}
+					
+					</ul>
+				
+			{/block:HasTags}
+			<div class="meta">
+				&#183; <a href="{Permalink}">{block:Date}{DayOfMonth}/{MonthNumber}/{ShortYear}{/block:Date}</a> {block:NoteCount} &#183; <a href="{Permalink}">{NoteCount}</a>{/block:NoteCount} &#183; <a href="http://tmv.proto.jp/reblog.php?post_url={Permalink};">Reblog</a>
+			</div>
+			</div>
+
+			<div class="caption">
+			
+			{block:Link}
+			{block:Description}
+				{Description}
+			{/block:Description}
+			{/block:Link}
+			
+	   {block:Audio}
+  		{AudioPlayerGrey}
+ 	 {/block:Audio}	
+ 	 
+				{block:Caption}
+					{Caption}
+				{/block:Caption}
+				
+	{block:Artist}
+		<strong>Artist:</strong> {Artist}
+	{/block:Artist}
+	
+	{block:Album}
+	<strong>Album:</strong> {Album}
+	{/block:Album}
+	
+	{block:TrackName}
+	<strong>Track:</strong> {TrackName}
+	{/block:TrackName}
+		{block:PostNotes}{PostNotes}{/block:PostNotes}
+			</div>
+
+		</div>
+	
+	{/block:Posts}
+	</div>
+	{/block:PermalinkPage}
+	
+	</body>
+</html>
+
+<style>
+
+div.outer {
+	display:table;
+}
+
+a.img-wrapper {
+	display:block;
+	text-align:center;
+	position:relative;
+
+  display:table-cell;
+  vertical-align:middle;
+}
+a.img-wrapper img {
+    min-height: 148px;
+    min-width: 148px;
+	padding: 10px;
+	margin:0 auto;
+}
+
+</style>
