@@ -276,6 +276,7 @@
 		  		background-color:white;
 				text-align: center;
 				overflow: hidden;
+				padding:10px;
 		  		
 		  	}
 		  	.post iframe, .post embed{
@@ -336,6 +337,20 @@
 				padding:0;
 				margin:0;
 			}
+
+			a.img-wrapper {
+				min-width:148px;
+				min-height:148px;
+				display:block;
+				vertical-align:middle;
+			}
+
+			a.img-wrapper img {
+				width:100%;
+				height:100%;
+			}
+
+
 {CustomCSS}
         </style>
         <!-- <link rel="stylesheet" href="http://static.tumblr.com/szanjxb/7fJlpp71p/animation.css" /> -->
@@ -537,11 +552,7 @@ update_searchfield($('form.searchform input'));
 		<div class="postrow">
 		{block:Posts}	
 			<div class="shadow post {block:Post1}one{/block:Post1} {block:Post2}two{/block:Post2} {block:Post3}three{/block:Post3} {block:Post4}four{/block:Post4} {block:Post5}five{/block:Post5} {block:Post6}six{/block:Post6} {block:Post7}seven{/block:Post7} {block:Post8}eight{/block:Post8} {block:Post9}nine{/block:Post9} {block:Post10}ten{/block:Post10} {block:Post11}eleven{/block:Post11} {block:Post12}twelve{/block:Post12} {block:Post13}thirteen{/block:Post13} {block:Post14}fourteen{/block:Post14} {block:Post15}fifteen{/block:Post15}">
-			<a href="{Permalink}" class="overlaylink">
-				<span class="overlay-desc">
-					{PlaintextCaption}
-				</span>
-			</a>
+
 				{block:Photo}
 					<div class="outer">
 					<a class="img-wrapper" href="{Permalink}"><img src="{PhotoURL-250}" alt="{PhotoAlt}"/></a>
@@ -606,8 +617,11 @@ update_searchfield($('form.searchform input'));
 					{Video-400}
 				</div>
 				{/block:Video}
-
-			
+				<a href="{Permalink}" class="overlaylink">
+					<span class="overlay-desc">
+						{PlaintextCaption}
+					</span>
+				</a>
 			</div>
 		{/block:Posts}
 		</div>
@@ -739,26 +753,3 @@ update_searchfield($('form.searchform input'));
 	
 	</body>
 </html>
-
-<style>
-
-div.outer {
-	display:table;
-}
-
-a.img-wrapper {
-	display:block;
-	text-align:center;
-	position:relative;
-
-  display:table-cell;
-  vertical-align:middle;
-}
-a.img-wrapper img {
-    min-height: 148px;
-    min-width: 148px;
-	padding: 10px;
-	margin:0 auto;
-}
-
-</style>
