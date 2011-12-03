@@ -12,7 +12,6 @@
         {block:Description}
             <meta name="description" content="{MetaDescription}" />
         {/block:Description}
-
     	<link href="http://fonts.googleapis.com/css?family=Iceland" rel="stylesheet" type="text/css"/>
 		<meta name="color:Key Color" content="#F9ECBA"/>
 		<meta name="image:Background" content="http://static.tumblr.com/szanjxb/Bahlplh1c/bg.jpg"/>
@@ -40,12 +39,14 @@
 				background: gray;
 				background: rgba(255,255,255,0.75);
 				/** For newer browsers **/
+/*
 				background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
 				background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
 				background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
 				background: -o-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
 				background: linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-
+*/
+				background:-moz-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
 				border-top: 1px solid #D4D4D4;
 				border-bottom: 1px solid #5B5B5B;
 				margin-left: 0;
@@ -687,9 +688,7 @@ update_searchfield($('form.searchform input'));
 			{block:Link}
 				<h1><a href="{URL}">{Name}</a></h1>
 			{/block:Link}
-			
-			
-			
+
 			{block:Photo}
 				{LinkOpenTag}<img src="{PhotoURL-500}" class="permalinkimg shadow" />{LinkCloseTag}
 			{/block:Photo}
