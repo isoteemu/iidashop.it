@@ -65,7 +65,6 @@
 				border-top: 1px solid #D4D4D4;
 				border-bottom: 1px solid #5B5B5B;
 				margin-left: 0;
-				padding: 4px 10px;
 				position: relative;
 				width: 100%;
 				left:0;
@@ -74,6 +73,7 @@
 				margin-top:2em;
 				margin-bottom:2em;
 				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7), 0 1px 0 #000;
+				position:relative;
 			}
 
 			header, header a, header a:visited{
@@ -90,15 +90,15 @@
 				color:red;
 			}
 
-			header h1 a {
-				color:#fff !important;
-			}
-
 			header h1 a:hover {
 				text-shadow: 0 .5px 1px {color:Key Color};
 			}
 			header h1 a:first-letter:hover {
 				text-shadow: 0 .5px 1px {color:Key Color};
+			}
+
+			h3 {
+				color: {color:Key Color};
 			}
 
 			ol, ul {
@@ -164,6 +164,8 @@
         		margin:0;
         		width:300px;
         		float:left;
+				margin-top:4px;
+				margin-bottom:4px;
         	}
         	ol.notes{
         		margin-top: 50px;
@@ -221,18 +223,21 @@
 				font-weight:bolder;
 			}
 		    .next{
-		    	background: url("http://static.tumblr.com/szanjxb/IzUlpbzw0/next.gif") no-repeat right center;
 		    	width:10%;
 		    	height:100%;
 		    	position:fixed;
 				top:0;
 				right:0;
-				float:left;
+				float:right;
 				overflow:none;
 				border-right:0px solid #FFF;
 		    }
+			.next .handler {
+		    	background: url("http://static.tumblr.com/szanjxb/IzUlpbzw0/next.gif") no-repeat right center;
+				height:100%;
+				width:100%;
+			}
 		    .previous{
-		    	background: url("http://static.tumblr.com/szanjxb/mCDlpbzy4/prev.gif") no-repeat left center;
 		    	width:10%;
 		    	height:100%;
 		    	position:fixed;
@@ -242,22 +247,67 @@
 				overflow:none;  
 				border-left:0px solid #FFF;
 		    }
+			.previous .handler {
+				background: url("http://static.tumblr.com/szanjxb/mCDlpbzy4/prev.gif") no-repeat left center;
+				height:100%;
+				width:100%;
+			}
+
 			.previous, .next {
 				opacity:0.75;
 				z-index:1;
 			}
 
 		    .next:hover{
-		    	/*border-right:20px solid #FFF;*/
-				margin-right:75px;
+		    	border-right:20px solid #FFF;
+				padding-right:75px;
 				opacity:1;
 		    }
-		  
+
 		  	.previous:hover{
-		  		/*border-left:20px solid #FFF;*/
-				margin-left:75px;
+		  		border-left:20px solid #FFF;
 				opacity:1;
 		  	}
+
+		    .next.hasthumb:hover{
+				padding-right:20px;
+				border-right:0px solid #FFF;
+		    }
+		  	.previous.hasthumb:hover{
+				padding-left:20px;
+				border-left:0px solid #FFF;
+		  	}
+
+			.next .nextpic, .previous .nextpic {
+				-webkit-transition: all 0.3s ease-in-out 0s;
+				-moz-transition: all 0.3s ease-in-out 0s;
+				-o-transition: all 0.3s ease-in-out 0s;
+				height:100%;
+				width:0;
+				display:none;
+				position:absolute;
+				background-color:#fff;
+			}
+
+			.next.hasthumb .nextpic, .previous.hasthumb .nextpic {
+				width:20px;
+				display:block;
+				background-position:center center;
+				background-repeat:none;
+			}
+			.next.hasthumb .nextpic {
+				float:right;
+				right:-20px;
+			}
+		    .next.hasthumb:hover .nextpic {
+				margin-right:20px;
+			}
+			.previous.hasthumb .nextpic {
+				left:-20px;
+			}
+		    .previous.hasthumb:hover .nextpic {
+				margin-left:20px;
+			}
 
 			.shadow {
 				-webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -384,6 +434,18 @@
 				position:absolute;
 			}
 
+			header a[href$="/about"] {
+				background: url("http://static.tumblr.com/wassjkj/n4Klgev6c/btn_info.png") no-repeat scroll 0 0 transparent;
+				display: block;
+				height: 37px;
+				position: absolute;
+				top: 0;
+				width: 43px;
+			}
+			header a[href$="/about"] * {
+				visibility:none;
+			}
+
 {CustomCSS}
         </style>
         <link rel="stylesheet" href="http://static.tumblr.com/szanjxb/7fJlpp71p/animation.css" />
@@ -431,23 +493,45 @@
 
 {block:PermalinkPagination}
 
+<script>
+function fetch_thumb(what) {
+	var uri = $('head link[rel="'+what+'"]').attr('href');
+
+	$.ajax({
+		url: uri,
+		cache: true,
+		dataType:'text',
+		success: function(data) {
+			var reg = new RegExp('<meta property="og:image" content="([^"]*)_250\.([^"]*)"[^>]*>', 'i');
+
+			var match = data.match(reg);
+			if( match ) {
+				$('a.'+what).addClass('hasthumb');
+				$('a.'+what+' .nextpic').css('background', '#fff url("'+ match[1]+'_75sq.'+match[2]+'") center center no-repeat');
+			}
+		}
+	});
+}
+</script>
+
 {block:PreviousPost}
-	<a href="{PreviousPost}" title="{lang:Previous}"><div class="previous"></div></a>
+	<a href="{PreviousPost}" title="{lang:Previous}" class="previous"><div class="nextpic"></div><div class="handler"></div></a>
+	<script type="text/javascript">$(document).ready(function() { fetch_thumb('previous');});</script>
 {/block:PreviousPost}
 
 {block:NextPost}
-	<a href="{NextPost}" title="{lang:Next}"><div class="next"></div></a>
+	<a href="{NextPost}" title="{lang:Next}" class="next"><div class="nextpic"></div><div class="handler"></div></a>
+	<script type="text/javascript">$(document).ready(function() { fetch_thumb('next');});</script>
 {/block:NextPost}
 
 {/block:PermalinkPagination}
-
-
 
 	<header>
 	<div class="content">
 		
 		<div class="header">
-		<h1><a href="/" title="{PlaintextDescription}"><img src="{PortraitURL-40}" alt="Logo for {PlaintextTitle}" width=40 height=40  class="logo" />{Title}</a></h1>
+		<div class="logo"><img src="{PortraitURL-40}" alt="Logo for {PlaintextTitle}" width=40 height=40 /></div>
+		<h1><a href="/" title="{PlaintextDescription}">{Title}</a></h1>
 		<p class="description">{Description}</p>
 		</div>
 		<nav class="nav">
