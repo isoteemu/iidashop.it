@@ -37,7 +37,7 @@
 			}
 
 			header {
-				background: white;
+				background: gray;
 				background: rgba(255,255,255,0.75);
 				/** For newer browsers **/
 				background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
@@ -57,6 +57,12 @@
 				display:block;
 				margin-top:2em;
 				margin-bottom:2em;
+				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7);
+			}
+
+			header, header a, header a:visited{
+				color: #FFF;
+				text-shadow: 0 -1px 0 #000000;
 			}
 
 			header h1 {
@@ -73,10 +79,10 @@
 			}
 
 			header h1 a:hover {
-				text-shadow: 0 1px 1px {color:Key Color};
+				text-shadow: 0 .5px 1px {color:Key Color};
 			}
 			header h1 a:first-letter:hover {
-				text-shadow: 0 1px 1px {color:Key Color};
+				text-shadow: 0 .5px 1px {color:Key Color};
 			}
 
 			ol, ul {
@@ -163,12 +169,10 @@
         		display:block;
         		background-color:#fff;
         	}
-        	p.description{
-        		color:#fff;
-				font-size:70%;
-				margin-top:-2%;
-				margin-bottom:2%;
-				text-shadow: 0 -1px 0 #000;
+        	header p.description{
+				margin-bottom: 2%;
+				margin-top: -2%;
+				font-size: 70%;
         	}
         	.caption{
         		clear:both;
@@ -416,7 +420,7 @@
 
 
 
-	<header class="shadow">
+	<header>
 	<div class="content">
 		<div class="header">
 		<h1><a href="/" title="{PlaintextDescription}">iida</a></h1>
