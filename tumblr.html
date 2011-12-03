@@ -12,6 +12,24 @@
         {block:Description}
             <meta name="description" content="{MetaDescription}" />
         {/block:Description}
+
+		{block:Posts}
+		{block:Photo}
+			<meta property="og:image" content="{PhotoURL-250}"/>
+			<meta property="og:description" content="{Title}: {MetaDescription}" />
+		{/block:Photo}
+		{/block:Posts}
+
+{block:PermalinkPagination}
+		{block:PreviousPost}
+			<link rel="previous" href="{PreviousPost}" title="{lang:Previous}" />
+		{/block:PreviousPost}
+
+		{block:NextPost}
+					<link rel="next" href="{NextPost}" title="{lang:Next}" />
+		{/block:NextPost}
+{/block:PermalinkPagination}
+
     	<link href="http://fonts.googleapis.com/css?family=Iceland" rel="stylesheet" type="text/css"/>
 		<meta name="color:Key Color" content="#F9ECBA"/>
 		<meta name="image:Background" content="http://static.tumblr.com/szanjxb/Bahlplh1c/bg.jpg"/>
@@ -36,17 +54,14 @@
 			}
 
 			header {
-				background: gray;
-				background: rgba(255,255,255,0.75);
+				background: rgba(255,255,255,.2);
 				/** For newer browsers **/
-/*
-				background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-				background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-				background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-				background: -o-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-				background: linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(235, 235, 235, 0.75));
-*/
+				background:-webkit-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
 				background:-moz-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
+				background:-ms-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
+				background:-o-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
+				background:radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
+
 				border-top: 1px solid #D4D4D4;
 				border-bottom: 1px solid #5B5B5B;
 				margin-left: 0;
@@ -58,7 +73,7 @@
 				display:block;
 				margin-top:2em;
 				margin-bottom:2em;
-				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7);
+				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7), 0 1px 0 #000;
 			}
 
 			header, header a, header a:visited{
@@ -233,12 +248,14 @@
 			}
 
 		    .next:hover{
-		    	border-right:20px solid #FFF;
+		    	/*border-right:20px solid #FFF;*/
+				margin-right:75px;
 				opacity:1;
 		    }
 		  
 		  	.previous:hover{
-		  		border-left:20px solid #FFF;
+		  		/*border-left:20px solid #FFF;*/
+				margin-left:75px;
 				opacity:1;
 		  	}
 
@@ -361,6 +378,11 @@
 				height:100%;
 			}
 
+			header .logo {
+				margin-left:-50px;
+				top:7px;
+				position:absolute;
+			}
 
 {CustomCSS}
         </style>
@@ -398,12 +420,12 @@
 
 {block:PreviousPage}
 	<a href="{PreviousPage}" title="{lang:Previous}"><div class="next"></div></a>	
-{block:PreviousPage}
+{/block:PreviousPage}
 
 {block:NextPage}
 	<a href="{NextPage}" title="{lang:Next}"><div class="previous"></div></a>
 {/block:NextPage}
-	
+
 {/block:Pagination}
 
 
@@ -423,8 +445,9 @@
 
 	<header>
 	<div class="content">
+		
 		<div class="header">
-		<h1><a href="/" title="{PlaintextDescription}">iida</a></h1>
+		<h1><a href="/" title="{PlaintextDescription}"><img src="{PortraitURL-40}" alt="Logo for {PlaintextTitle}" width=40 height=40  class="logo" />{Title}</a></h1>
 		<p class="description">{Description}</p>
 		</div>
 		<nav class="nav">
@@ -556,7 +579,7 @@ update_searchfield($('form.searchform input'));
 		</div>
 	</header>
 	
-	{block:IndexPage}	
+	{block:IndexPage}
 	<div class="content">
 
 		
