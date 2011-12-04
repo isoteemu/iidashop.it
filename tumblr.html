@@ -70,7 +70,6 @@
 				left:0;
 				right:0;
 				display:block;
-				margin-top:2em;
 				margin-bottom:2em;
 				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7), 0 1px 0 #000;
 				position:relative;
@@ -436,6 +435,17 @@
 				position:absolute;
 			}
 
+			.headmask {
+				width:100%;
+				height:2em;
+				z-index:4;
+				background: url("{image:Background}") repeat 0 0;
+				position: relative;
+				top:0;
+				left:0;
+				right:0;
+			}
+
 			.navbar {
 				box-shadow: 0 3px 2px #000000 inset;
 				display: block;
@@ -446,10 +456,11 @@
 				z-index: 2;
 				opacity:0.7;
 				border-top:0px solid #FFF;
-				padding-bottom:5px;
+				padding-bottom:20px;
+				-webkit-transition: all 0.3s ease-in-out 0s;
 				-moz-transition: all 0.3s ease-in-out 0s;
+				-o-transition: all 0.3s ease-in-out 0s;
 			}
-
 
 			.navbar:hover {
 				opacity:1;
@@ -568,6 +579,8 @@ function fetch_thumb(what) {
 {/block:NextPost}
 
 {/block:PermalinkPagination}
+
+	<div class="headmask">&nbsp;</div>
 
 	<header>
 		<div class="content">
