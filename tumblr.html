@@ -56,11 +56,11 @@
 			header {
 				background: rgba(255,255,255,.2);
 				/** For newer browsers **/
-				background:-webkit-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
-				background:-moz-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
-				background:-ms-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
-				background:-o-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
-				background:radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) );
+				background:-webkit-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) ), url("{image:Background}") repeat 0 -2em;
+				background:-moz-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) ), url("{image:Background}") repeat 0 -2em;
+				background:-ms-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) ), url("{image:Background}") repeat 0 -2em;
+				background:-o-radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) ), url("{image:Background}") repeat 0 -2em;
+				background:radial-gradient( 50% 0%, circle closest-corner, rgba(255,255,255,.2), rgba(255,255,255,.0) ), url("{image:Background}") repeat 0 -2em;
 
 				border-top: 1px solid #D4D4D4;
 				border-bottom: 1px solid #5B5B5B;
@@ -74,6 +74,7 @@
 				margin-bottom:2em;
 				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.7), 0 1px 0 #000;
 				position:relative;
+				z-index:5;
 			}
 
 			header, header a, header a:visited{
@@ -229,13 +230,8 @@
 				font-weight:bolder;
 			}
 		    .next{
-		    	width:10%;
-		    	height:100%;
-		    	position:fixed;
-				top:0;
 				right:0;
 				float:right;
-				overflow:none;
 				border-right:0px solid #FFF;
 		    }
 			.next .handler {
@@ -244,13 +240,8 @@
 				width:100%;
 			}
 		    .previous{
-		    	width:10%;
-		    	height:100%;
-		    	position:fixed;
-				top:0;
 				left:0;
 				float:left;
-				overflow:none;  
 				border-left:0px solid #FFF;
 		    }
 			.previous .handler {
@@ -262,6 +253,12 @@
 			.previous, .next {
 				opacity:0.75;
 				z-index:1;
+		    	width:10%;
+		    	height:100%;
+		    	position:fixed;
+				top:0;
+				min-width:30px;
+				overflow:none;
 			}
 
 		    .next:hover{
