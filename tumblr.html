@@ -230,22 +230,23 @@
 			.label{
 				font-weight:bolder;
 			}
-		    .next{
+
+		    .previous{
 				right:0;
 				float:right;
 				border-right:0px solid #FFF;
 		    }
-			.next .handler {
+			.previous .handler {
 		    	background: url("http://static.tumblr.com/szanjxb/IzUlpbzw0/next.gif") no-repeat right center;
 				height:100%;
 				width:100%;
 			}
-		    .previous{
+		    .next{
 				left:0;
 				float:left;
 				border-left:0px solid #FFF;
 		    }
-			.previous .handler {
+			.next .handler {
 				background: url("http://static.tumblr.com/szanjxb/mCDlpbzy4/prev.gif") no-repeat left center;
 				height:100%;
 				width:100%;
@@ -262,23 +263,14 @@
 				overflow:none;
 			}
 
-		    .next:hover{
+		    .previous:hover{
 		    	border-right:20px solid #FFF;
 				opacity:1;
 		    }
 
-		  	.previous:hover{
+		  	.next:hover{
 		  		border-left:20px solid #FFF;
 				opacity:1;
-		  	}
-
-		    .next.hasthumb:hover{
-				padding-right:20px;
-				border-right:0px solid #FFF;
-		    }
-		  	.previous.hasthumb:hover{
-				padding-left:20px;
-				border-left:0px solid #FFF;
 		  	}
 
 			.next .nextpic, .previous .nextpic {
@@ -290,26 +282,6 @@
 				display:none;
 				position:absolute;
 				background-color:#fff;
-			}
-
-			.next.hasthumb .nextpic, .previous.hasthumb .nextpic {
-				width:20px;
-				display:block;
-				background-position:center center;
-				background-repeat:none;
-			}
-			.next.hasthumb .nextpic {
-				float:right;
-				right:-20px;
-			}
-		    .next.hasthumb:hover .nextpic {
-				margin-right:20px;
-			}
-			.previous.hasthumb .nextpic {
-				left:-20px;
-			}
-		    .previous.hasthumb:hover .nextpic {
-				margin-left:20px;
 			}
 
 			.shadow {
@@ -517,6 +489,7 @@
         <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
         <![endif]-->
 		<meta name="google-site-verification" content="WyNjSV_nxbgsS9P87fQNbHKkfzN2_ch8ShVX-YA8yCc" />
+        <link rel="stylesheet" href="file:///home/teemu/projects/iidashop.it/style.css" />
     </head>
 	<body>
 
@@ -547,38 +520,15 @@
 
 
 {block:PermalinkPagination}
+	{block:NextPost}
+		<a href="{NextPost}" title="{lang:Next}" class="next"><div class="nextpic"></div><div class="handler"></div></a>
+		<script type="text/javascript">$(document).ready(function() { fetch_thumb('next');});</script>
+	{/block:NextPost}
 
-<script>
-function fetch_thumb(what) {
-	var uri = $('head link[rel="'+what+'"]').attr('href');
-
-	$.ajax({
-		url: uri,
-		cache: true,
-		dataType:'text',
-		success: function(data) {
-			var reg = new RegExp('<meta property="og:image" content="([^"]*)_250\.([^"]*)"[^>]*>', 'i');
-
-			var match = data.match(reg);
-			if( match ) {
-				$('a.'+what).addClass('hasthumb');
-				$('a.'+what+' .nextpic').css('background', '#fff url("'+ match[1]+'_75sq.'+match[2]+'") center center no-repeat');
-			}
-		}
-	});
-}
-</script>
-
-{block:PreviousPost}
-	<a href="{PreviousPost}" title="{lang:Previous}" class="previous"><div class="nextpic"></div><div class="handler"></div></a>
-	<script type="text/javascript">$(document).ready(function() { fetch_thumb('previous');});</script>
-{/block:PreviousPost}
-
-{block:NextPost}
-	<a href="{NextPost}" title="{lang:Next}" class="next"><div class="nextpic"></div><div class="handler"></div></a>
-	<script type="text/javascript">$(document).ready(function() { fetch_thumb('next');});</script>
-{/block:NextPost}
-
+	{block:PreviousPost}
+		<a href="{PreviousPost}" title="{lang:Previous}" class="previous"><div class="nextpic"></div><div class="handler"></div></a>
+		<script type="text/javascript">$(document).ready(function() { fetch_thumb('previous');});</script>
+	{/block:PreviousPost}
 {/block:PermalinkPagination}
 
 	<div class="headmask">&nbsp;</div>
